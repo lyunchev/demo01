@@ -6,3 +6,28 @@ modules:
  - name: uidev
    type: html5
    path: uidev
+
+ - name: db
+   type: hdb
+   path: db
+   requires:
+    - name: hdi_db
+
+
+
+ - name: node
+   type: nodejs
+   path: node
+   provides:
+    - name: node_api
+      properties:
+         url: ${default-url}
+
+resources:
+ - name: hdi_db
+   parameters:
+      config:
+         schema: DEMO01
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
